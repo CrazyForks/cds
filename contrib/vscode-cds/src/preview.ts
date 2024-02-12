@@ -3,7 +3,7 @@ import * as uri from "vscode-uri";
 import { isCDSWorkflowFile } from "./lib/cds/file_utils";
 import { Journal } from "./lib/utils/journal";
 
-const dirWeb = 'dist-web/workflow-preview/browser';
+const dirWeb = 'dist-web/workflow-preview';
 
 export function init(context: vscode.ExtensionContext) {
     const cdsPreview = new CDSPreview(context);

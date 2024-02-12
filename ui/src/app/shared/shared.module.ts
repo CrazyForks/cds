@@ -315,7 +315,7 @@ const icons: IconDefinition[] = [AimOutline, ApartmentOutline, ApiOutline, Arrow
         WorkflowWNodeJoinComponent,
         WorkflowWNodeMenuEditComponent,
         WorkflowWNodeOutGoingHookComponent,
-        WorkflowWNodePipelineComponent
+        WorkflowWNodePipelineComponent,
     ],
     providers: [
         PermissionService,
