@@ -1,3 +1,5 @@
+@import '../../../../common';
+
 :host {
   height: 100%;
   display: flex;
@@ -8,8 +10,13 @@
 
 app-tabs {
   ::ng-deep {
-    .menu {
-      background-color: inherit !important;
+    .ant-menu {
+      background-color: $greyBackground !important;
+      color: $darkTheme_grey_6;
+
+      :host-context(.night) & {
+        background-color: $darkBackground !important;
+      }
     }
   }
 }
@@ -18,9 +25,9 @@ app-tabs {
   position: absolute;
   top: 0;
   right: 0;
-  height: 40px;
-  width: 40px;
-  padding: 10px;
+  height: 38px;
+  width: 38px;
+  padding: 9px;
   cursor: pointer;
 
   &:hover {

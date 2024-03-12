@@ -33,8 +33,13 @@ nz-page-header-content {
 
     app-tabs {
         ::ng-deep {
-            .menu {
-                background-color: inherit;
+            .ant-menu {
+                background-color: $greyBackground !important;
+                color: $darkTheme_grey_6;
+
+                :host-context(.night) & {
+                    background-color: $darkBackground !important;
+                }
             }
         }
     }

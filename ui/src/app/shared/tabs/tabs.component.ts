@@ -20,6 +20,7 @@ export class Tab {
 @Component({
     selector: 'app-tabs',
     templateUrl: './tabs.html',
+    styleUrls: ['./tabs.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 @AutoUnsubscribe()

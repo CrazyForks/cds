@@ -58,17 +58,12 @@
                     [nzData]="workflowRun.results" #autoHeightDirective=nsAutoHeightTable #resultsTable>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Type</th>
+                            <th nzWidth="100px">Type</th>
                             <th>Name</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let result of resultsTable.data">
-                            <td>
-                                <span class="info" nz-icon nzType="file" nzTheme="fill"></span>
-                                {{result.id}}
-                            </td>
                             <td>
                                 {{result.type}}
                             </td>
@@ -77,7 +72,7 @@
                                     {{result.detail.Data.deployment_name}}:{{result.detail.Data.version}}
                                 </ng-container>
                                 <ng-template #nameTmpl>
-                                    {{result.detail.Data.name}}
+                                    {{result.detail.Data.name ?? result.id}}
                                 </ng-template>
                             </td>
                         </tr>

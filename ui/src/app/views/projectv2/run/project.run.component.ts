@@ -78,13 +78,9 @@ export class ProjectV2WorkflowRunComponent implements OnDestroy {
         this.infoPanelSize = this._store.selectSnapshot(PreferencesState.panelSize(ProjectV2WorkflowRunComponent.INFO_PANEL_KEY));
         this.defaultTabs = [<Tab>{
             title: 'Infos',
-            icon: 'info-circle',
-            iconTheme: 'outline',
             key: 'infos'
         }, <Tab>{
             title: 'Results',
-            icon: 'unordered-list',
-            iconTheme: 'outline',
             key: 'results'
         }];
         this.tabs = [...this.defaultTabs];
@@ -111,10 +107,8 @@ export class ProjectV2WorkflowRunComponent implements OnDestroy {
             if (!!this.workflowRunInfos.find(i => i.level === 'warning' || i.level === 'error')) {
                 this.tabs = [<Tab>{
                     title: 'Problems',
-                    icon: 'warning',
-                    iconTheme: 'fill',
                     key: 'problems',
-                    default: true,
+                    default: true
                 }, ...this.defaultTabs];
             }
         } catch (e) {
