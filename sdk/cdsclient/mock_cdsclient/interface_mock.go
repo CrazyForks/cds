@@ -4243,6 +4243,21 @@ func (mr *MockRBACClientMockRecorder) RBACGet(ctx, permissionIdentifier any) *go
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RBACGet", reflect.TypeOf((*MockRBACClient)(nil).RBACGet), ctx, permissionIdentifier)
 }
 
+// RBACGroupPermission mocks base method.
+func (m *MockRBACClient) RBACGroupPermission(ctx context.Context, groupName string) (sdk.PermissionSummary, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "RBACGroupPermission", ctx, groupName)
+	ret0, _ := ret[0].(sdk.PermissionSummary)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// RBACGroupPermission indicates an expected call of RBACGroupPermission.
+func (mr *MockRBACClientMockRecorder) RBACGroupPermission(ctx, groupName any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RBACGroupPermission", reflect.TypeOf((*MockRBACClient)(nil).RBACGroupPermission), ctx, groupName)
+}
+
 // RBACImport mocks base method.
 func (m *MockRBACClient) RBACImport(ctx context.Context, rbacRule sdk.RBAC, mods ...cdsclient.RequestModifier) (sdk.RBAC, error) {
 	m.ctrl.T.Helper()
@@ -4276,6 +4291,21 @@ func (m *MockRBACClient) RBACList(ctx context.Context) ([]sdk.RBAC, error) {
 func (mr *MockRBACClientMockRecorder) RBACList(ctx any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RBACList", reflect.TypeOf((*MockRBACClient)(nil).RBACList), ctx)
+}
+
+// RBACUserPermission mocks base method.
+func (m *MockRBACClient) RBACUserPermission(ctx context.Context, username string) (sdk.PermissionSummary, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "RBACUserPermission", ctx, username)
+	ret0, _ := ret[0].(sdk.PermissionSummary)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// RBACUserPermission indicates an expected call of RBACUserPermission.
+func (mr *MockRBACClientMockRecorder) RBACUserPermission(ctx, username any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RBACUserPermission", reflect.TypeOf((*MockRBACClient)(nil).RBACUserPermission), ctx, username)
 }
 
 // MockProjectKeysClient is a mock of ProjectKeysClient interface.
@@ -10662,6 +10692,21 @@ func (mr *MockInterfaceMockRecorder) RBACGet(ctx, permissionIdentifier any) *gom
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RBACGet", reflect.TypeOf((*MockInterface)(nil).RBACGet), ctx, permissionIdentifier)
 }
 
+// RBACGroupPermission mocks base method.
+func (m *MockInterface) RBACGroupPermission(ctx context.Context, groupName string) (sdk.PermissionSummary, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "RBACGroupPermission", ctx, groupName)
+	ret0, _ := ret[0].(sdk.PermissionSummary)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// RBACGroupPermission indicates an expected call of RBACGroupPermission.
+func (mr *MockInterfaceMockRecorder) RBACGroupPermission(ctx, groupName any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RBACGroupPermission", reflect.TypeOf((*MockInterface)(nil).RBACGroupPermission), ctx, groupName)
+}
+
 // RBACImport mocks base method.
 func (m *MockInterface) RBACImport(ctx context.Context, rbacRule sdk.RBAC, mods ...cdsclient.RequestModifier) (sdk.RBAC, error) {
 	m.ctrl.T.Helper()
@@ -10695,6 +10740,21 @@ func (m *MockInterface) RBACList(ctx context.Context) ([]sdk.RBAC, error) {
 func (mr *MockInterfaceMockRecorder) RBACList(ctx any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RBACList", reflect.TypeOf((*MockInterface)(nil).RBACList), ctx)
+}
+
+// RBACUserPermission mocks base method.
+func (m *MockInterface) RBACUserPermission(ctx context.Context, username string) (sdk.PermissionSummary, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "RBACUserPermission", ctx, username)
+	ret0, _ := ret[0].(sdk.PermissionSummary)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// RBACUserPermission indicates an expected call of RBACUserPermission.
+func (mr *MockInterfaceMockRecorder) RBACUserPermission(ctx, username any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RBACUserPermission", reflect.TypeOf((*MockInterface)(nil).RBACUserPermission), ctx, username)
 }
 
 // RegionAdd mocks base method.
