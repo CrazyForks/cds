@@ -122,6 +122,7 @@ var workflowRunSearchCmd = cli.Command{
 	Flags: []cli.Flag{
 		{Name: "commit"},
 		{Name: "workflow", Usage: "<vcs>/<repo>/<workflow_name>"},
+		{Name: "repository", Usage: "<vcs>/<repo>"},
 		{Name: "project"},
 		{Name: "branch"},
 		{Name: "status"},
@@ -134,6 +135,7 @@ var workflowRunSearchCmd = cli.Command{
 func workflowRunSearchFunc(v cli.Values) (cli.ListResult, error) {
 	commit := v.GetString("commit")
 	workflow := v.GetString("workflow")
+	repository := v.GetString("repository")
 	projKey := v.GetString("project")
 	branch := v.GetString("branch")
 	status := v.GetString("status")
@@ -172,6 +174,9 @@ func workflowRunSearchFunc(v cli.Values) (cli.ListResult, error) {
 	}
 	if status != "" {
 		mods = append(mods, cdsclient.WithQueryParameter("status", status))
+	}
+	if repository != "" {
+		mods = append(mods, cdsclient.WithQueryParameter("repository", repository))
 	}
 
 	var runs []sdk.V2WorkflowRun
@@ -271,7 +276,39 @@ func workflowRunHistoryFunc(v cli.Values) (cli.ListResult, error) {
 	if err != nil {
 		return nil, err
 	}
-	return cli.AsListResult(runs), nil
+
+	type CliRun struct {
+		ID           string                  `json:"id" cli:"id"`
+		ProjectKey   string                  `json:"project_key" cli:"project_key"`
+		VCSServer    string                  `json:"vcs_server" cli:"vcs_server"`
+		Repository   string                  `json:"repository" cli:"repository"`
+		WorkflowName string                  `json:"workflow_name" cli:"workflow_name"`
+		User         string                  `json:"user" cli:"user"`
+		Status       sdk.V2WorkflowRunStatus `json:"status" cli:"status"`
+		RunNumber    int64                   `json:"run_number" cli:"run_number" `
+		Started      time.Time               `json:"started" cli:"started"`
+		LastModified time.Time               `json:"last_modified" cli:"last_modified"`
+		RefName      string                  `json:"ref_name" cli:"ref_name"`
+		Commit       string                  `json:"commit" cli:"commit"`
+	}
+	runsHistory := make([]CliRun, len(runs))
+	for i, r := range runs {
+		runsHistory[i] = CliRun{
+			ID:           r.ID,
+			ProjectKey:   r.ProjectKey,
+			VCSServer:    r.VCSServer,
+			Repository:   r.Repository,
+			WorkflowName: r.WorkflowName,
+			User:         r.Initiator.Username(),
+			Status:       r.Status,
+			RunNumber:    r.RunNumber,
+			Started:      r.Started,
+			LastModified: r.LastModified,
+			RefName:      r.Contexts.Git.RefName,
+			Commit:       r.Contexts.Git.Sha,
+		}
+	}
+	return cli.AsListResult(runsHistory), nil
 }
 
 var workflowRunStatusCmd = cli.Command{
